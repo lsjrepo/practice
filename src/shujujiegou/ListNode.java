@@ -29,7 +29,7 @@ class Plus {
        ListNode p=result;
        int jingwei=0;
        while(aTemp!=null||bTemp!=null){
-           if(aTemp!=null&&bTemp!=null){
+           if(aTemp!=null&&bTemp    !=null){
                p.next=new ListNode((aTemp.val+bTemp.val+jingwei)%10);
                p=p.next;
                jingwei=(aTemp.val+bTemp.val+jingwei)/10;
