@@ -1,6 +1,4 @@
-package shujujiegou;
-
-import sun.reflect.generics.tree.Tree;
+package shujujiegou.Tree;
 
 /**
  * Created by lsj on 17-4-7.

@@ -1,4 +1,4 @@
-package shujujiegou;
+package shujujiegou.Tree;
 
 /**
  * Created by lsj on 17-4-8.
@@ -38,8 +38,7 @@ public class MinimalBST {
         TreeNode tree=buildMinimalBST(a);
         printTree(tree);
     }
-}
- */
+}*/
 
 
 
