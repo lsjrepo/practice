@@ -16,14 +16,18 @@ package BinaryStudy;
 
  */
 public class Exchange {
+
     public static int exchangeOddEven(int x) {
         // write code here
         int z=x&0xAAAAAAAA;
         int y=x&0x55555555;
         return ((z>>1)+(y<<1));
+
     }
 
     public static void main(String[] args) {
+        int[]a[]=new int[5][5];
         System.out.println(exchangeOddEven(10));
     }
+
 }
