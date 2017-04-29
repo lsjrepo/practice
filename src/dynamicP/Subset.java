@@ -16,7 +16,11 @@ import java.util.Arrays;
  step1:初始结果集为 [ [A[0] ]
  step2:遍历剩余 A[1] ~ A[n - 1]. 每取出一个元素遍加到 结果集：
  step3:复制一份结果集，并把元素加入到结果集中的每个集合的头部
- step4:合并 复制的结果集 + 只有当前元素的集合 + 原始结果集
+ step4:合并 复制的结果集 + 只有当前元素的集合 + 原始结果集】
+以下面的这个测试用力为例:
+ step1:[[123]]
+ step2:[[456 123] [456] [123]]
+ step3:[[789 456 123] [789 456] [789 123] [789] [456 123] [456] [123]]
  */
 public class Subset {
     public static ArrayList<ArrayList<Integer>> getSubsets(int[] A, int n) {
@@ -38,17 +42,17 @@ public class Subset {
         }
         ArrayList<ArrayList<Integer>> tmp=getAllSubsets(A,n-1);//step1
 
-        for(int i=0;i<tmp.size();i++){//step2,3
+        for(int i=0;i<tmp.size();i++){//本阶段新添加的那个数添加到原有的集合中
             inner =new ArrayList<Integer>();
             inner.add(A[n-1]);
             for(int j=0;j<tmp.get(i).size();j++){
                 inner.add(tmp.get(i).get(j));
-            }
+            }//获得本阶段含有所有变量的那个集合
             outer.add(inner);
         }
         inner=new ArrayList<Integer>();
         inner.add(A[n-1]);
-        outer.add(inner);
+        outer.add(inner);//本阶段新添加的那个数单独作为一个集合加入
         outer.addAll(tmp);//step4
         return outer;
 
