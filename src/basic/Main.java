@@ -8,7 +8,7 @@ package basic;
  * 思路:
  * 二分法...
  * 如果数组是乱序的，先排一下序，再二分
- * 送分题!!!以后做不出来可以去屎了
+ *
  */
 public class Main {
     public static int binSearch(int temp,int[] a,int start,int end){
