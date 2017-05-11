@@ -29,9 +29,10 @@ public class Subset {
             return new ArrayList<>();
         }
         Arrays.sort(A);//将数组升序排列
-        return getAllSubsets(A,n);
+       /* return getAllSubsets(A,n);*/
+       return null;
     }
-    public static ArrayList<ArrayList<Integer>> getAllSubsets(int[] A,int n){
+/*    public static ArrayList<ArrayList<Integer>> getAllSubsets(int[] A,int n){
         ArrayList<ArrayList<Integer>> outer=new ArrayList<>();
         ArrayList<Integer> inner;
         if (n==1){
@@ -57,7 +58,7 @@ public class Subset {
         return outer;
 
 
-    }
+    }*/
 
     public static void main(String[] args) {
         int[] a={123,456,789};
