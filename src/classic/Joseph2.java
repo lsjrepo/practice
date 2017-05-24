@@ -8,7 +8,9 @@ import java.util.List;
  * 约塞夫问题2
  * 思路:
  * 1.构造双向循环链表
- * 2.
+ * 2.建立一个循环模拟一次过程,只有这个报数为1的留下,循环结束后,将最后一个元素放到链表的的最前面
+ * 3.循环多次,直到只剩下一个元素
+ * 3.输出这个元素
  */
 public class Joseph2 {
     public static int getResult(int n){
