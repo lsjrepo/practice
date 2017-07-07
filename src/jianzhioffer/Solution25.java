@@ -1,20 +1,10 @@
 package jianzhioffer;
 
-/**
- * Created by lusaijie on 2017/7/7.
- */
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
-
-/**
- * 数组中有一个数字出现的次数超过数组长度的一半，
- * 请找出这个数字。例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，
- * 超过数组长度的一半，因此输出2。如果不存在则输出0。
- */
-public class Solution25 {
-    public static  int MoreThanHalfNum_Solution(int [] array) {
+public class Solution25{
+    public int MoreThanHalfNum_Solution(int [] array) {
         Arrays.sort(array);
         HashMap<Integer,Integer> map=new HashMap<>();
         int count=1;
@@ -36,10 +26,5 @@ public class Solution25 {
         else{
             return 0;
         }
-    }
-
-    public static void main(String[] args) {
-        int[] a={1,2,2,2,5,4,25,10,5,6,4,5,6,5,5,6};
-        System.out.println(MoreThanHalfNum_Solution(a));
     }
 }
