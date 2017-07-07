@@ -1,8 +1,7 @@
 package jianzhioffer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
+
 
 /**
  * 输入一个字符串,按字典序打印出该字符串中字符的所有排列。
@@ -11,29 +10,33 @@ import java.util.HashSet;
  * 输入一个字符串,长度不超过9(可能有字符重复),字符只包括大小写字母。
  */
 public class Solution24 {
-    static ArrayList<String> result=new ArrayList<>();
     public static ArrayList<String> Permutation(String str) {
-        char[] array=str.toCharArray();
-        Arrays.sort(array);
-
-        diedai(array,0,array.length-1);
+       ArrayList<String> result=new ArrayList<>();
+       if(null==str||str.length()<1){
+            return result;
+       }
+        char[] charArray=str.toCharArray();
+        HashSet<String> hashSet=new HashSet<>();
+        diedai(hashSet,charArray,0,charArray.length-1);
+        result.addAll(hashSet);//去重
+        Collections.sort(result);
         return result;
+    }
+    public static void diedai(HashSet<String> hashSet,char[] a,int start,int end){
+        if (start==end){
+            StringBuilder sb=new StringBuilder();
+            for(char c:a){
+                sb.append(c);
+            }
+            hashSet.add(sb.toString());
+            return;
         }
-    public static void diedai(char[] a,int start,int end){
-
-        if (end<0){
-            return ;
-        }
-        if (end==start){
-            result.add(String.valueOf(a));
-        }
-        for(int i=start;i<=end;i++){
-
-            swap(a,i,start);//固定第一个数,第一个数的取值分别为数组中的每一个数
-
-            diedai(a,start+1,end);//对后n-1个数进行全排列
-
-            swap(a,start,i);//把顺序换回来
+        else{
+            for(int i=start;i<=end;i++){
+                swap(a,start,i);
+                diedai(hashSet,a,start+1,end);
+                swap(a,start,i);
+            }
         }
     }
     public static void swap(char[] c,int i,int j){
@@ -43,10 +46,9 @@ public class Solution24 {
     }
 
     public static void main(String[] args) {
-        /*System.out.println(Permutation("abc"));*/
-        ArrayList<String> list=Permutation("abc");
-        for (String a:list){
-            System.out.println(a);
+        ArrayList<String> list=Permutation("aacdb");
+        for (String s:list){
+            System.out.println(s);
         }
     }
 }
