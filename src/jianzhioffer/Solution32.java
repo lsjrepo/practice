@@ -56,6 +56,7 @@ public class Solution32 {
             else{//前半部位置i上的那个数比你大，那么后后面的数都比你大，构成逆序数
                 temp[k++]=array[j++];
                 count+=(mid-i+1);
+
             }
         }
         while(i<=mid){//左边还有剩余
