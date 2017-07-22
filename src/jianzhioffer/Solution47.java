@@ -11,8 +11,41 @@ public class Solution47 {
         if (str==null||pattern==null){
             return false;
         }
-        if (str[0]==pattern[0]){
+        int strIndex=0;
+        int patternIndex=0;
+        return judzge(str,strIndex,pattern,patternIndex);
+    }
+
+    private boolean judzge(char[] str, int strIndex, char[] pattern, int patternIndex) {
+        if (strIndex==str.length&&patternIndex==pattern.length){
+            return true;
+        }
+        if ((strIndex!=str.length)&&(pattern.length==patternIndex)){//str比pattern长,必定不匹配
+            return  false;
+        }
+        //str结束了,pattern还没有结束类似aaa aaaa*b*c*这种情况
+        if ((strIndex==str.length)&&(pattern.length!=patternIndex)){
+            if (((patternIndex+1)<pattern.length)&&(pattern[patternIndex+1]=='*')){
+                return judzge(str,strIndex,pattern,patternIndex+2);
+            }
+            return false;
+        }
+        //str未结束并且pattern未结束
+        if (((patternIndex+1)<pattern.length)&&(pattern[patternIndex+1]=='*')){
+            if ((pattern[patternIndex]==str[strIndex])||(pattern[patternIndex]=='.')&&strIndex!=str.length){
+                return judzge(str,strIndex,pattern,patternIndex+2)||
+                        judzge(str,strIndex+1,pattern,patternIndex+2)||
+                        judzge(str,strIndex+1,pattern,patternIndex);
+            }
+            else{
+                return judzge(str,strIndex,pattern,patternIndex+2);
+            }
 
         }
+        if ((pattern[patternIndex]==str[strIndex])||(pattern[patternIndex]=='.')&&strIndex!=str.length){
+            return judzge(str,strIndex+1,pattern,patternIndex+1);
+        }
+        return false;
+
     }
 }
