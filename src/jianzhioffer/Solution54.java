@@ -58,7 +58,7 @@ public class Solution54 {
                     layerList.add(iterator.next().val);
                 }
             }
-            while(cur<size){//添加下一行的元素
+            while(cur<size){//添加下一行的元素，size是当前那层节点的数目
                 TreeNode node=queue.poll();
                 if (node.left!=null){
                     queue.add(node.left);
