@@ -7,17 +7,18 @@ import java.util.Scanner;
  */
 public class Main1 {
     public static void main(String[] args) {
-        Scanner sin=new Scanner(System.in);
+        /*Scanner sin=new Scanner(System.in);
         int n=sin.nextInt();
         int[] a=new int[n];
         for(int i=0;i<n;i++){
             a[i]=sin.nextInt();
-        }
+        }*/
+        int[] a={1,2,30873,4,4589,6,7,8,9,10};
        /* bubbleSort(a,n);*/
         /*insertSort(a,n);*/
-         selectSort(a,n);
-
-        for (int i=0;i<n;i++){
+         /*selectSort(a,n);*/
+        quickSort(a,0,a.length-1);
+        for (int i=0;i<a.length;i++){
             System.out.printf("%d ",a[i]);
         }
     }
@@ -58,11 +59,35 @@ public class Main1 {
             }
         }
     }
-
-
     /**快速排序*/
-    public static void quickSort(int[] a,int start,int end){
+    public static int quickSortPartion(int[] a,int start,int end){
+            int low=start-1;
+            int pivoit=a[end];
+            for(int high=start;high<end;high++){
+                if (a[high]<=pivoit){
+                    low++;
+                   /* swap(a[low],a[high]);*/
+                    /*int temp=a[low];
+                    a[low]=a[high];
+                    a[high]=temp;*/
+                    swap(a,low,high);
+                }
+            }
+        swap(a,low+1,end);
 
+            return low+1;
+    }
+    public static void swap(int[] a,int i,int j){
+        int temp=a[i];
+        a[i]=a[j];
+        a[j]=temp;
+    }
+    public static void quickSort(int[] a,int start,int end){
+        if (start<end){
+            int position=quickSortPartion(a,start,end);//确定按照主元进行分割的时候，主元所在的位置
+            quickSort(a,start,position-1);
+            quickSort(a,position+1,end);
+        }
     }
     /**堆排序*/
     /**归并排序*/
