@@ -1,4 +1,4 @@
-package basic;
+package mogujie;
 
 /**
  * Created by lsj on 17-4-26.
