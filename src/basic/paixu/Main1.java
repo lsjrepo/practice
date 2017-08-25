@@ -17,7 +17,11 @@ public class Main1 {
        /* bubbleSort(a,n);*/
         /*insertSort(a,n);*/
          /*selectSort(a,n);*/
-        quickSort(a,0,a.length-1);
+        /*quickSort(a,0,a.length-1);*/
+        for (int i=0;i<a.length-1;i++){
+            heapSort(a,a.length-1-i);
+            swap(a,0,a.length-1-i);
+        }
         for (int i=0;i<a.length;i++){
             System.out.printf("%d ",a[i]);
         }
@@ -66,10 +70,6 @@ public class Main1 {
             for(int high=start;high<end;high++){
                 if (a[high]<=pivoit){
                     low++;
-                   /* swap(a[low],a[high]);*/
-                    /*int temp=a[low];
-                    a[low]=a[high];
-                    a[high]=temp;*/
                     swap(a,low,high);
                 }
             }
@@ -89,7 +89,31 @@ public class Main1 {
             quickSort(a,position+1,end);
         }
     }
-    /**堆排序*/
+    /**堆排序,每一次排序会求到最小值，最小堆的情况*/
+    public static void heapSort(int[] a,int lastIndex){
+        for (int i=(lastIndex-1)/2;i>=0;i--){
+            int t=i;//最下层的右子树开始
+            while((2*t+1)<=lastIndex){//这是当前节点下面的左节点
+                int bIndex=2*t+1;
+                if (bIndex<lastIndex){//如果还有右节点
+                    if (a[bIndex]<a[bIndex+1]){
+                        bIndex++;//这时指到右边的节点
+                    }
+                }
+                if (a[t]<a[bIndex]){
+                    swap(a,t,bIndex);
+                    t=bIndex;//如果有子树的话，则继续往下构建
+                }
+                else{
+                    break;//如果没有子树，那么往相邻的左子树部分移动
+                }
+
+            }
+
+        }
+
+    }
     /**归并排序*/
+
     /**Shell排序*/
 }
