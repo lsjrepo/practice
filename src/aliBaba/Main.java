@@ -16,13 +16,13 @@ public class Main {
             input[i]=sin.nextInt();
         }
         int K=sin.nextInt();
-        System.out.println(maxSubString(input,K);
+        System.out.println(maxSubString(input,K));
     }
 
     public static boolean maxSubString(int[] input, int k) {
         List<Integer> list=new ArrayList<>();
         int maxLength=0;
-
+return false;
     }
 
 }

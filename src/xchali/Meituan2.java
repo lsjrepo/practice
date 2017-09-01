@@ -2,13 +2,14 @@ package xchali;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 /**
  * 字符串的组合问题
  */
 public class Meituan2 {
-    private static List<List<Integer>> result;
+    private static int Maxsize;
     public static void main(String[] args) {
         Scanner sin=new Scanner(System.in);
         int maxLength=0;
@@ -18,14 +19,14 @@ public class Meituan2 {
             input[i]=sin.nextInt();
         }
         int K=sin.nextInt();
-        result=new ArrayList<>();
+
         combine(input,K);
-        for(List l:result){
+       /* for(List l:result){
             if (l.size()>maxLength){
                 maxLength=l.size();
             }
-        }
-        System.out.println(maxLength);
+        }*/
+        System.out.println(Maxsize);
     }
     private static void combine(int[] input,int k) {
         if (input.length==0){
@@ -40,15 +41,18 @@ public class Meituan2 {
 
     public static void getSubString(int[] input,int start,int end,int k,List<Integer> list){
         if (end==-1){
-            /*int sum=0;
+            int sum=0;
             for (Integer t:list){
                 sum+=t;
             }
             if ((sum%k)==0){
-                result.add(list);
-                System.out.println(list.toString());
-            }*/
-            result.add(list);
+               /* result.add(list);
+                System.out.println(list.toString());*/
+                if(list.size()>Maxsize) Maxsize=list.size();
+            }
+
+
+          /*  result.add(list);*/
             System.out.println(list.toString());
             return;
         }
@@ -56,8 +60,10 @@ public class Meituan2 {
             return;
         }
         list.add(input[start]);
+
         getSubString(input,start+1,end-1,k,list);
         list.remove(list.size()-1);
+
         getSubString(input,start+1,end,k,list);
     }
 }
