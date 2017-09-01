@@ -7,14 +7,9 @@ public class Main {
     /** 当然，你也可以不按照这个模板来作答，完全按照自己的想法来 ^-^  **/
     private static int process(BoxTemplate boxTemplate,Model[] models)
     {
-
-
-
      if(models.length<=10) return 1;
      else if(models.length<20) return 2;
      else return 5;
-
-
     }
    static class Model{
         int price;
