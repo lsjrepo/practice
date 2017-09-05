@@ -153,8 +153,6 @@ public class Test  {
         }
         return  root;//分布在左右子树，那么公共节点必定为root
     }
-    /**给定一个整形数组，其中每一个元素各不相同，返回这些元素所有排列的可能*/
-    /*public List<List<Integer>> permute(List<Integer> nums){
 
-    }*/
+
 }
