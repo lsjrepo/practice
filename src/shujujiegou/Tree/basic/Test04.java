@@ -1,54 +1,59 @@
-/*
 package shujujiegou.Tree.basic;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-
-*/
 /**
  * N皇后问题
- *//*
-
+ */
 public class Test04 {
-    private static int N;
-    private static List<List<String>> result;
-    private static Boolean[] col=new Boolean[N];
-    private static Boolean[] dia1=new Boolean[2*N-1];
-    private static Boolean[] dia2=new Boolean[2*N-1];
-    public static void putQueen(int n,int index,List<Integer> row){//index表示行号,row表示存放的一组解
-            if (index==n){//
-                result.add(generateBoard(n,row));
+    public static void putQueen(char[][] board,int index,List<List<String>> res){//index表示行号,row表示存放的一组解
+            if (index==board.length){//递归截止条件
+                res.add(generateBoard(board));
                 return;
             }
-            for (int i=0;i<n;i++){//i表示列号
-                if (!col[i] &&!dia1[index+i]&&!dia2[index-i+n-1]){//尝试将index行的皇后摆放在i列
-                    row.add(i);
-                    col[i]=true;
-                    dia1[index+i]=true;
-                    dia2[index-i+n-1]=true;
-                    putQueen(n,index+1,row);
-                    col[i]=false;
-                    dia1[index+i]=false;
-                    dia2[index-i+n-1]=false;
-                    row.remove(row.size()-1);
+            for (int i=0;i<board.length;i++){
+                if (validate(board,i,index)){
+                    board[i][index]='Q';
+                    putQueen(board,index+1,res);
+                    board[i][index]='.';//回溯,返回原来的状态
                 }
             }
     }
-
-    private static List<String> generateBoard(int n, List<Integer> row) {
-
+    public static boolean validate(char[][] board,int x,int y){
+        for (int i=0;i<board.length;i++){//列
+            for (int j=0;j<y;j++){//行
+                if (board[i][j]=='Q'&&((x-y==i-j)||(x+y==i+j)||(x==i))){//ij这个位置上有皇后，并且i,j这个位置在对角线并且同列
+                    return false;
+                }
+            }
+        }
+        return true;
     }
-
+    public static List<String> generateBoard(char[][] board){
+        List<String> res=new LinkedList<>();
+        for (int i=0;i<board.length;i++){
+            String s=new String(board[i]);
+            res.add(s);
+        }
+        return res;
+    }
     public static List<List<String>> solveNQueens(int n) {
-            result.clear();
-            List<Integer> row=new ArrayList<>();
-            putQueen(n,0,row);//从第0行开始
-            return result;
+        char[][] board=new char[n][n];
+        for(int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                board[i][j]='.';
+            }
+        }
+        List<List<String>> res=new ArrayList<>();
+        putQueen(board,0,res);//从第0行开始
+        return res;
     }
 
     public static void main(String[] args) {
-        N=8;
-
+        List<List<String>> result=solveNQueens(4);
+        for(List list:result){
+            System.out.println(list);
+        }
     }
 }
-*/
