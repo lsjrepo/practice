@@ -13,17 +13,54 @@ public class Main1 {
         for(int i=0;i<n;i++){
             a[i]=sin.nextInt();
         }*/
-        int[] a={1,2,30873,4,4589,6,7,8,9,10};
+        int[] a={46,79,56,38,40,84};
        /* bubbleSort(a,n);*/
         /*insertSort(a,n);*/
          /*selectSort(a,n);*/
-        /*quickSort(a,0,a.length-1);*/
-        for (int i=0;i<a.length-1;i++){
+        quicksort2(a,0,a.length-1);
+       /* for (int i=0;i<a.length-1;i++){
             heapSort(a,a.length-1-i);
             swap(a,0,a.length-1-i);
         }
         for (int i=0;i<a.length;i++){
             System.out.printf("%d ",a[i]);
+        }*/
+    }
+
+    //双路快排
+    public static void quicksort2(int[] source,int low,int high){
+        int guardi,guardj,x;
+        if(low<high){
+            guardi=low;
+            guardj=high;
+            x=source[guardi];//选取第一个基准数
+            while(guardi!=guardj){
+                while(guardi<guardj&&source[guardj]>=x){//哨兵j从从右向左寻找比基准数小的元素,然后停下
+                    guardj--;
+                }
+                while(guardi<guardj&&source[guardi]<=x){//哨兵i从左向右找寻比基准数大的数,然后停下
+                    guardi++;
+                }
+                //停下之后立即交换两个左右两个数
+                if(guardi<guardj){
+                    int temp=source[guardi];
+                    source[guardi]=source[guardj];
+                    source[guardj]=temp;
+
+
+                }
+            }
+            //跳出while循环表示两个哨兵在同一个位置上了,那么立即将基准数交换
+            source[low]=source[guardj];
+            source[guardj]=x;
+            for (int i=0;i<source.length;i++){
+                System.out.printf("%d ",source[i]);
+            }
+            System.out.println();
+            //对左右两边的数据进行递归
+            quicksort2(source,low,guardi-1);
+            quicksort2(source,guardi+1,high);
+
         }
     }
     /**冒泡排序*/
@@ -85,6 +122,11 @@ public class Main1 {
     public static void quickSort(int[] a,int start,int end){
         if (start<end){
             int position=quickSortPartion(a,start,end);//确定按照主元进行分割的时候，主元所在的位置
+            for (int i=0;i<a.length;i++){
+                System.out.printf("%d ",a[i]);
+            }
+            System.out.println();
+           //打印每一次的排列状况
             quickSort(a,start,position-1);
             quickSort(a,position+1,end);
         }
