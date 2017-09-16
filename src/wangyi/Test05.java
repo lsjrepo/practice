@@ -1,8 +1,5 @@
 package wangyi;
-
-
 import java.util.Scanner;
-
 /**
  * 两次输入
  * 题目要求:
@@ -27,22 +24,35 @@ public class Test05 {
         System.out.println(result.replaceAll("@","\n"));
     }
     public static String judge(int[] a){
-        int jishu=0;
-        int t=0;
-        for (int i=1;i<a.length;i++){
+        int count2=0;
+        int count4=0;
+        int countodd=0;
+        for (int i=0;i<a.length;i++){
             if (a[i]%2!=0){
-                jishu++;
+                countodd++;
             }
-            if (a[i]==2){
-                t++;
+            if (a[i]%4==0){
+                count4++;
+            }
+
+        }
+        count2=a.length-countodd-count4;
+
+        if (count2==0){
+            if (count4>=count2-1){
+                return "Yes";
+            }
+            else{
+                return "No";
             }
         }
-        if ((t==0)&&(jishu>1)){
-            return "No";
+        else{
+            if (count4>=countodd){
+                return "Yes";
+            }
+            else{
+                return "No";
+            }
         }
-        else if ((t!=0)&&(jishu!=0)){
-            return "No";
-        }
-        return "Yes";
     }
 }

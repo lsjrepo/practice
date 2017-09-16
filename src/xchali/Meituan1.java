@@ -9,18 +9,22 @@ import java.util.Scanner;
 public class Meituan1 {
     public static void main(String args[]){
         Scanner scanner = new Scanner(System.in);
-            int n = scanner.nextInt();
-            int[] s=new int[n];
-        for (int i = 0; i <n ; i++) {
-            s[i]=scanner.nextInt();
+         int n=scanner.nextInt();
+         int[] a=new int[n];
+         for (int i=0;i<n;i++){
+            a[i]=scanner.nextInt();
+         }
+        System.out.println(getP1(a));
+    }
+
+    private static String getP1(int[] a) {
+        if (a.length==3){
+            return "Alice";
         }
-        Arrays.sort(s);
-        int sum=0;
-        for (int i = 0; i <n-1 ; i++) {
-            sum+=s[i];
+        else{
+            return "Bob";
         }
-        if(sum>=s[n-1]) System.out.println("Yes");
-        else System.out.println("No");
-        }
+    }
+
 
 }
