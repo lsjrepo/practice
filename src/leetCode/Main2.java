@@ -1,9 +1,6 @@
 package leetCode;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * leetCode71
@@ -31,6 +28,8 @@ public class Main2 {
     }
 
     public static void main(String[] args) {
-        System.out.println(simplifyPath("/a/./b/../../c/"));
+        Scanner sin=new Scanner(System.in);
+        String s=sin.next();
+        System.out.println(simplifyPath(s));
     }
 }
