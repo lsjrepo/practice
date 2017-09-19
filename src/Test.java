@@ -1,8 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-import java.util.Stack;
-
 /**
  * Created by lsj on 17-9-6.
  */
