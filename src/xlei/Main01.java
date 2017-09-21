@@ -22,7 +22,7 @@ public class Main01 {
 
     private static void helper(int index, int n, int sum) {//从1-n找到和为sum的数组
         if (index<=sum){//超过sum肯定终止了(终止条件)
-            if (index==n){//
+            if (index==n){//相当于遍历了一遍数组
                /* helper(index+1,m,n,list);
                 list.push(index);
                 for (Integer l:list){
